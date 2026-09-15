@@ -27,6 +27,29 @@
     });
   }
 
+  /* ---------- 1b. כיווץ הכותרת + מד התקדמות גלילה ---------- */
+  var header = document.querySelector('.site-header');
+  var progress = document.querySelector('#progress');
+  if (header || progress) {
+    var ticking = false;
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY || 0;
+        if (header) header.classList.toggle('is-scrolled', y > 40);
+        if (progress) {
+          var max = document.documentElement.scrollHeight - window.innerHeight;
+          progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+        }
+        ticking = false;
+      });
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }
+
   /* ---------- 2. חשיפה בגלילה ---------- */
   var revealables = document.querySelectorAll('[data-reveal]');
   if (!('IntersectionObserver' in window)) {

@@ -107,6 +107,14 @@ third-party widget** (no external script, no cookie, nothing to pay for):
 - Honours `prefers-reduced-motion`; the quote carousel does not autoplay under it.
 - `accessibility.html` is the statement itself (ת״י 5568 / WCAG 2.1 AA).
 
+## Motion
+
+Hero content rises in on a stagger behind a slow Ken Burns drift on the photo; sections
+reveal on scroll; a gold progress bar tracks scroll in the header, which shrinks past 40px;
+icons lift on hover, the gold buttons catch a shine sweep, and the WhatsApp button pulses.
+Everything is CSS-driven and fully disabled by both `prefers-reduced-motion` and the
+"עצירת אנימציות" toggle in the accessibility menu.
+
 ## Local preview
 
 ```bash
@@ -122,3 +130,9 @@ python -m http.server 8080
 command, output directory `/`. Faster edge presence in the region.
 
 No build step means either host deploys in seconds on every push.
+
+## Credit
+
+The footer carries a "נבנה על ידי Dayanamic" credit linking to
+[dayanamic.com/he](https://dayanamic.com/he), using the Dayanamic mark from
+`assets/img/dayanamic-mark.svg`.
