@@ -1,39 +1,20 @@
 /* ============================================================
-   מורן זילכה מזור — סקריפט האתר
+   עו״ד מורן זילכה מזור — סקריפט האתר
    אין שרת ואין API: הטופס מרכיב הודעת וואטסאפ / דוא"ל בצד הלקוח.
    ============================================================ */
 (function () {
   'use strict';
 
-  /* ---- פרטי יצירת קשר (מקור אמת יחיד לטופס) ----
-     לעדכון: שנו כאן וגם בקישורים שב-HTML (ראו CONTENT.md). */
-  var CONTACT = {
-    whatsapp: '972500000000',            // מספר בפורמט בינלאומי, בלי + ובלי מקפים
-    email: 'office@zilka-mazor.co.il'
-  };
-
   var root = document.documentElement;
   var body = document.body;
 
-  /* ---------- 1. כותרת דביקה ---------- */
-  var header = document.querySelector('.site-header');
-  if (header) {
-    var onScroll = function () {
-      header.classList.toggle('is-stuck', window.scrollY > 24);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  /* ---------- 2. תפריט מובייל ---------- */
+  /* ---------- 1. תפריט מובייל ---------- */
   var burger = document.querySelector('.burger');
   var panel = document.querySelector('.nav-panel');
   if (burger && panel) {
     var setMenu = function (open) {
       body.classList.toggle('nav-open', open);
       burger.setAttribute('aria-expanded', String(open));
-      panel.setAttribute('aria-hidden', String(!open));
-      body.style.overflow = open ? 'hidden' : '';
     };
     burger.addEventListener('click', function () {
       setMenu(!body.classList.contains('nav-open'));
@@ -44,10 +25,9 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && body.classList.contains('nav-open')) setMenu(false);
     });
-    setMenu(false);
   }
 
-  /* ---------- 3. חשיפה בגלילה ---------- */
+  /* ---------- 2. חשיפה בגלילה ---------- */
   var revealables = document.querySelectorAll('[data-reveal]');
   if (!('IntersectionObserver' in window)) {
     revealables.forEach(function (el) { el.classList.add('is-in'); });
@@ -58,22 +38,17 @@
         entry.target.classList.add('is-in');
         io.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
     revealables.forEach(function (el, i) {
-      // השהיה מדורגת בתוך אותה קבוצה
       if (!el.style.getPropertyValue('--d')) {
         var sibs = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : i;
-        el.style.setProperty('--d', Math.min(sibs, 5) * 90 + 'ms');
+        el.style.setProperty('--d', Math.min(sibs, 5) * 70 + 'ms');
       }
       io.observe(el);
     });
   }
 
-  /* ---------- 4. אנימציית פתיחה של ההירו ---------- */
-  var hero = document.querySelector('.hero');
-  if (hero) requestAnimationFrame(function () { hero.classList.add('is-in'); });
-
-  /* ---------- 5. סימון הסעיף הפעיל בתפריט ---------- */
+  /* ---------- 3. סימון הסעיף הפעיל בתפריט ---------- */
   var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
   if (sections.length && navLinks.length && 'IntersectionObserver' in window) {
@@ -85,81 +60,97 @@
           a.setAttribute('aria-current', a.getAttribute('href') === '#' + id ? 'true' : 'false');
         });
       });
-    }, { rootMargin: '-45% 0px -50% 0px' });
+    }, { rootMargin: '-40% 0px -55% 0px' });
     sections.forEach(function (s) { spy.observe(s); });
   }
 
-  /* ---------- 6. שנה נוכחית ---------- */
+  /* ---------- 4. שנה נוכחית ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });
 
-  /* ---------- 7. טופס יצירת קשר — ללא שרת ---------- */
-  var form = document.querySelector('#contact-form');
-  if (form) {
-    var status = form.querySelector('.form__status');
+  /* ---------- 5. קרוסלת ציטוטים ---------- */
+  var track = document.querySelector('#quotes');
+  if (track) {
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.quote-slide'));
+    var dotsWrap = document.querySelector('#quote-dots');
+    var index = 0;
+    var timer = null;
 
-    var compose = function (d) {
-      var lines = [
-        'שלום מורן, הגעתי דרך האתר.',
-        '',
-        'שם: ' + d.name,
-        'טלפון: ' + d.phone,
-        d.email ? 'דוא"ל: ' + d.email : '',
-        'נושא: ' + d.topic,
-        '',
-        d.message
-      ];
-      return lines.filter(function (l) { return l !== ''; }).join('\n');
-    };
-
-    var submitVia = function (channel) {
-      if (!form.reportValidity()) return;
-      // שימו לב: form.name מחזיר את שם הטופס ולא את השדה — לכן ניגשים דרך elements
-      var val = function (n) {
-        var el = form.elements[n];
-        return el && el.value ? el.value.trim() : '';
-      };
-      var data = {
-        name: val('name'),
-        phone: val('phone'),
-        email: val('email'),
-        topic: val('topic'),
-        message: val('message')
-      };
-      var text = compose(data);
-      var url;
-      if (channel === 'email') {
-        url = 'mailto:' + CONTACT.email +
-              '?subject=' + encodeURIComponent('פנייה מהאתר — ' + data.topic) +
-              '&body=' + encodeURIComponent(text);
-      } else {
-        url = 'https://wa.me/' + CONTACT.whatsapp + '?text=' + encodeURIComponent(text);
-      }
-      window.open(url, channel === 'email' ? '_self' : '_blank', 'noopener');
-      if (status) {
-        status.textContent = channel === 'email'
-          ? 'נפתחה תוכנת הדוא"ל שלך עם פרטי הפנייה — נותר רק לשלוח.'
-          : 'נפתח וואטסאפ עם פרטי הפנייה — נותר רק ללחוץ שליחה.';
+    var show = function (i) {
+      index = (i + slides.length) % slides.length;
+      slides.forEach(function (s, n) { s.classList.toggle('is-active', n === index); });
+      if (dotsWrap) {
+        dotsWrap.querySelectorAll('button').forEach(function (d, n) {
+          d.setAttribute('aria-current', n === index ? 'true' : 'false');
+        });
       }
     };
+    var start = function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (root.classList.contains('a11y-nomotion')) return;
+      stop();
+      timer = setInterval(function () { show(index + 1); }, 7000);
+    };
+    var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      submitVia('whatsapp');
-    });
-
-    var mailBtn = form.querySelector('[data-send="email"]');
-    if (mailBtn) {
-      mailBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        submitVia('email');
+    if (dotsWrap) {
+      slides.forEach(function (_, n) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'ציטוט ' + (n + 1));
+        b.addEventListener('click', function () { show(n); start(); });
+        dotsWrap.appendChild(b);
       });
     }
+    var prev = document.querySelector('.quote-nav--prev');
+    var next = document.querySelector('.quote-nav--next');
+    if (prev) prev.addEventListener('click', function () { show(index - 1); start(); });
+    if (next) next.addEventListener('click', function () { show(index + 1); start(); });
+
+    var band = document.querySelector('.quote-band');
+    if (band) {
+      band.addEventListener('mouseenter', stop);
+      band.addEventListener('mouseleave', start);
+      band.addEventListener('focusin', stop);
+    }
+    show(0);
+    start();
   }
 
+  /* ---------- 6. חלונות תחומי עיסוק ---------- */
+  var openCard = null;
+  var openModal = function (id) {
+    var dlg = document.getElementById(id);
+    if (!dlg) return;
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else dlg.setAttribute('open', '');       // נפילה אחורה בדפדפנים ישנים
+  };
+  document.querySelectorAll('[data-modal]').forEach(function (card) {
+    var trigger = function (e) {
+      if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      openCard = card;
+      openModal(card.getAttribute('data-modal'));
+    };
+    card.addEventListener('click', trigger);
+    card.addEventListener('keydown', trigger);
+  });
+  document.querySelectorAll('dialog.modal').forEach(function (dlg) {
+    var close = function () {
+      if (typeof dlg.close === 'function') dlg.close();
+      else dlg.removeAttribute('open');
+      if (openCard) { openCard.focus(); openCard = null; }
+    };
+    dlg.querySelectorAll('.modal__close').forEach(function (b) { b.addEventListener('click', close); });
+    dlg.querySelectorAll('[data-close-go]').forEach(function (a) { a.addEventListener('click', close); });
+    // לחיצה על הרקע סוגרת
+    dlg.addEventListener('click', function (e) {
+      if (e.target === dlg) close();
+    });
+  });
 
-  /* ---------- 9. תפריט נגישות ---------- */
+  /* ---------- 7. תפריט נגישות ---------- */
   var a11yBtn = document.querySelector('.a11y__btn');
   var a11yPanel = document.querySelector('.a11y__panel');
   if (a11yBtn && a11yPanel) {
@@ -192,7 +183,6 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !a11yPanel.hidden) { togglePanel(false); a11yBtn.focus(); }
     });
-
     a11yPanel.addEventListener('click', function (e) {
       var btn = e.target.closest('[data-a11y]');
       if (!btn) return;
@@ -208,7 +198,6 @@
     togglePanel(false);
   }
 
-  /* ---------- 8. גלילה רכה עם כיבוד prefers-reduced-motion ---------- */
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     root.style.scrollBehavior = 'auto';
   }
