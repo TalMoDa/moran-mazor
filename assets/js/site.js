@@ -115,12 +115,17 @@
 
     var submitVia = function (channel) {
       if (!form.reportValidity()) return;
+      // שימו לב: form.name מחזיר את שם הטופס ולא את השדה — לכן ניגשים דרך elements
+      var val = function (n) {
+        var el = form.elements[n];
+        return el && el.value ? el.value.trim() : '';
+      };
       var data = {
-        name: form.name.value.trim(),
-        phone: form.phone.value.trim(),
-        email: form.email.value.trim(),
-        topic: form.topic.value,
-        message: form.message.value.trim()
+        name: val('name'),
+        phone: val('phone'),
+        email: val('email'),
+        topic: val('topic'),
+        message: val('message')
       };
       var text = compose(data);
       var url;
