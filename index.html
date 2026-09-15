@@ -87,6 +87,11 @@
   <symbol id="i-corner" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1">
     <path d="M33 18 V1 H16 M33 10 V8 H25"/>
   </symbol>
+  <symbol id="i-crest" viewBox="0 0 120 86" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="miter">
+    <path d="M60 3 70 15 60 27 50 15Z"/>
+    <path d="M3 86V46h16V32h16V20h50v12h16v14h16v40"/>
+    <path d="M14 86V53h13V41h14V30h38v11h14v12h13v33" stroke-width="1.1" opacity=".75"/>
+  </symbol>
   <symbol id="i-phone" viewBox="0 0 24 24">
     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
   </symbol>
@@ -97,7 +102,7 @@
     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
   </symbol>
   <symbol id="i-clock" viewBox="0 0 24 24">
-    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.5 5H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/>
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/>
   </symbol>
   <symbol id="i-wa" viewBox="0 0 24 24">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.15-.174.2-.298.3-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
@@ -175,12 +180,14 @@
         <span class="corner corner--tr"><svg><use href="#i-corner"></use></svg></span>
         <span class="corner corner--bl"><svg><use href="#i-corner"></use></svg></span>
         <span class="corner corner--br"><svg><use href="#i-corner"></use></svg></span>
+        <span class="crest" aria-hidden="true"><svg viewBox="0 0 120 86"><use href="#i-crest"></use></svg></span>
+        <span class="finial" aria-hidden="true"><i></i></span>
 
         <img class="hero__mono" src="assets/monogram.svg" alt="" width="132" height="153" fetchpriority="high">
         <img class="hero__word" src="assets/wordmark.svg" alt="" width="560" height="35">
         <h1>מורן זילכה מזור</h1>
         <p class="hero__role">עורכת דין ומגשרת</p>
-        <div class="rule rule--tight" style="width:min(70%,260px)"><i></i></div>
+        <div class="rule rule--tight rule--sheen" style="width:min(70%,260px)"><i></i></div>
         <p class="hero__tag">
           דיני משפחה, גירושין וגישור — ליווי משפטי אישי, דיסקרטי ומכבד
           בצמתים הרגישים ביותר של החיים. קודם מחפשים פתרון בהסכמה; וכשצריך להיאבק, נאבקים.
@@ -275,7 +282,7 @@
   <section class="section section--tint" id="practice">
     <div class="wrap">
       <div class="section-head section-head--center" data-reveal>
-        <p class="eyebrow eyebrow--center">Practice Areas</p>
+        <span class="ghost" aria-hidden="true">Practice</span>
         <h2>תחומי עיסוק</h2>
         <p class="lede">
           המשרד מתמקד בדיני משפחה ובגישור — תחומים שבהם ההבדל בין טיפול נכון לטיפול ממהר
@@ -283,90 +290,97 @@
         </p>
       </div>
 
-      <div class="grid grid--3">
-        <article class="card" data-reveal>
-          <span class="corner corner--tr"><svg><use href="#i-corner"></use></svg></span>
-          <span class="corner corner--bl"><svg><use href="#i-corner"></use></svg></span>
-          <span class="card__num">01</span>
-          <h3>גירושין ודיני משפחה</h3>
-          <p>ליווי מלא בהליך פרידה או גירושין — מהשלב שבו עוד מתלבטים ועד הסכם חתום או פסק דין.</p>
-          <ul class="card__list">
-            <li><span class="dia" aria-hidden="true"></span>הסכמי גירושין ואישורם</li>
-            <li><span class="dia" aria-hidden="true"></span>משמורת, הורות והסדרי שהות</li>
-            <li><span class="dia" aria-hidden="true"></span>מזונות ילדים ומזונות בן/בת זוג</li>
-            <li><span class="dia" aria-hidden="true"></span>חלוקת רכוש ואיזון משאבים</li>
-          </ul>
-        </article>
+      <ol class="index">
+        <li class="idx" data-reveal>
+          <div>
+            <h3>גירושין ודיני משפחה</h3>
+            <p>ליווי מלא בהליך פרידה או גירושין — מהשלב שבו עוד מתלבטים, דרך משא ומתן או ייצוג בבית המשפט, ועד הסכם חתום או פסק דין.</p>
+            <ul class="tags">
+            <li>הסכמי גירושין ואישורם</li>
+            <li>משמורת, הורות והסדרי שהות</li>
+            <li>מזונות ילדים ומזונות בן/בת זוג</li>
+            <li>חלוקת רכוש ואיזון משאבים</li>
+            </ul>
+          </div>
+          <span class="idx__num" aria-hidden="true">01</span>
+        </li>
 
-        <article class="card" data-reveal>
-          <span class="corner corner--tr"><svg><use href="#i-corner"></use></svg></span>
-          <span class="corner corner--bl"><svg><use href="#i-corner"></use></svg></span>
-          <span class="card__num">02</span>
-          <h3>גישור ויישוב סכסוכים</h3>
-          <p>תהליך מובנה, חסוי ומהיר שבו הצדדים מעצבים בעצמם את ההסכם — במקום שההחלטה תיפול באולם.</p>
-          <ul class="card__list">
-            <li><span class="dia" aria-hidden="true"></span>גישור בגירושין ובפרידה</li>
-            <li><span class="dia" aria-hidden="true"></span>סכסוכים בתוך המשפחה (אחים, הורים וילדים)</li>
-            <li><span class="dia" aria-hidden="true"></span>סכסוכי ירושה ועיזבון</li>
-            <li><span class="dia" aria-hidden="true"></span>ניסוח ההסכם ומתן תוקף של פסק דין</li>
-          </ul>
-        </article>
 
-        <article class="card" data-reveal>
-          <span class="corner corner--tr"><svg><use href="#i-corner"></use></svg></span>
-          <span class="corner corner--bl"><svg><use href="#i-corner"></use></svg></span>
-          <span class="card__num">03</span>
-          <h3>הסכמי ממון וחיים משותפים</h3>
-          <p>ההסכם הטוב ביותר נחתם דווקא כשטוב. הסכם ברור היום חוסך שנים של התדיינות מחר.</p>
-          <ul class="card__list">
-            <li><span class="dia" aria-hidden="true"></span>הסכם ממון לפני ואחרי נישואין</li>
-            <li><span class="dia" aria-hidden="true"></span>הסכם לחיים משותפים (ידועים בציבור)</li>
-            <li><span class="dia" aria-hidden="true"></span>הגנה על רכוש מלפני הקשר ועל עסק משפחתי</li>
-            <li><span class="dia" aria-hidden="true"></span>אישור ההסכם בערכאה המוסמכת</li>
-          </ul>
-        </article>
+        <li class="idx" data-reveal>
+          <div>
+            <h3>גישור ויישוב סכסוכים</h3>
+            <p>תהליך מובנה, חסוי ומהיר שבו הצדדים מעצבים בעצמם את ההסכם — במקום שההחלטה תיפול באולם, בידי מי שאינו מכיר אתכם.</p>
+            <ul class="tags">
+            <li>גישור בגירושין ובפרידה</li>
+            <li>סכסוכים בתוך המשפחה</li>
+            <li>סכסוכי ירושה ועיזבון</li>
+            <li>ניסוח ההסכם ומתן תוקף של פסק דין</li>
+            </ul>
+          </div>
+          <span class="idx__num" aria-hidden="true">02</span>
+        </li>
 
-        <article class="card" data-reveal>
-          <span class="corner corner--tr"><svg><use href="#i-corner"></use></svg></span>
-          <span class="corner corner--bl"><svg><use href="#i-corner"></use></svg></span>
-          <span class="card__num">04</span>
-          <h3>צוואות, ירושות ועיזבונות</h3>
-          <p>סדר מראש במקום מריבה אחר כך — ניסוח צוואה, ניהול עיזבון וליווי משפחות בסכסוכי ירושה.</p>
-          <ul class="card__list">
-            <li><span class="dia" aria-hidden="true"></span>עריכת צוואה וצוואה הדדית</li>
-            <li><span class="dia" aria-hidden="true"></span>צו ירושה וצו קיום צוואה</li>
-            <li><span class="dia" aria-hidden="true"></span>הסכמי חלוקת עיזבון</li>
-            <li><span class="dia" aria-hidden="true"></span>התנגדות לצוואה וייצוג בסכסוכי ירושה</li>
-          </ul>
-        </article>
 
-        <article class="card" data-reveal>
-          <span class="corner corner--tr"><svg><use href="#i-corner"></use></svg></span>
-          <span class="corner corner--bl"><svg><use href="#i-corner"></use></svg></span>
-          <span class="card__num">05</span>
-          <h3>הגנה במצבי משבר</h3>
-          <p>כשהמצב דחוף ורגיש — טיפול מהיר, דיסקרטי וללא שיפוטיות, כולל פנייה דחופה לבית המשפט.</p>
-          <ul class="card__list">
-            <li><span class="dia" aria-hidden="true"></span>צווי הגנה וצווי הרחקה</li>
-            <li><span class="dia" aria-hidden="true"></span>סעדים דחופים ועיקולים זמניים</li>
-            <li><span class="dia" aria-hidden="true"></span>הפרת הסדרי שהות</li>
-            <li><span class="dia" aria-hidden="true"></span>ליווי מול רשויות הרווחה</li>
-          </ul>
-        </article>
+        <li class="idx" data-reveal>
+          <div>
+            <h3>הסכמי ממון וחיים משותפים</h3>
+            <p>ההסכם הטוב ביותר נחתם דווקא כשטוב. הסכם ברור היום חוסך שנים של התדיינות מחר, ומאפשר להיכנס לקשר בראש שקט.</p>
+            <ul class="tags">
+            <li>הסכם ממון לפני ואחרי נישואין</li>
+            <li>הסכם לחיים משותפים (ידועים בציבור)</li>
+            <li>הגנה על רכוש מלפני הקשר ועל עסק משפחתי</li>
+            <li>אישור ההסכם בערכאה המוסמכת</li>
+            </ul>
+          </div>
+          <span class="idx__num" aria-hidden="true">03</span>
+        </li>
 
-        <article class="card" data-reveal>
-          <span class="corner corner--tr"><svg><use href="#i-corner"></use></svg></span>
-          <span class="corner corner--bl"><svg><use href="#i-corner"></use></svg></span>
-          <span class="card__num">06</span>
-          <h3>תכנון לעתיד ואפוטרופסות</h3>
-          <p>מסמכים שמאפשרים לכם להחליט מראש מי יחליט עבורכם, ולחסוך מהמשפחה הליכים מיותרים.</p>
-          <ul class="card__list">
-            <li><span class="dia" aria-hidden="true"></span>ייפוי כוח מתמשך והנחיות מקדימות</li>
-            <li><span class="dia" aria-hidden="true"></span>מינוי אפוטרופוס</li>
-            <li><span class="dia" aria-hidden="true"></span>ליווי מול האפוטרופוס הכללי</li>
-            <li><span class="dia" aria-hidden="true"></span>הסדרת ענייני רכוש ובריאות מראש</li>
-          </ul>
-        </article>
+
+        <li class="idx" data-reveal>
+          <div>
+            <h3>צוואות, ירושות ועיזבונות</h3>
+            <p>סדר מראש במקום מריבה אחר כך — ניסוח צוואה שתעמוד במבחן, ניהול עיזבון וליווי משפחות בסכסוכי ירושה.</p>
+            <ul class="tags">
+            <li>עריכת צוואה וצוואה הדדית</li>
+            <li>צו ירושה וצו קיום צוואה</li>
+            <li>הסכמי חלוקת עיזבון</li>
+            <li>התנגדות לצוואה וייצוג בסכסוכי ירושה</li>
+            </ul>
+          </div>
+          <span class="idx__num" aria-hidden="true">04</span>
+        </li>
+
+
+        <li class="idx" data-reveal>
+          <div>
+            <h3>הגנה במצבי משבר</h3>
+            <p>כשהמצב דחוף ורגיש — טיפול מהיר, דיסקרטי וללא שיפוטיות, כולל פנייה דחופה לבית המשפט באותו יום כשצריך.</p>
+            <ul class="tags">
+            <li>צווי הגנה וצווי הרחקה</li>
+            <li>סעדים דחופים ועיקולים זמניים</li>
+            <li>הפרת הסדרי שהות</li>
+            <li>ליווי מול רשויות הרווחה</li>
+            </ul>
+          </div>
+          <span class="idx__num" aria-hidden="true">05</span>
+        </li>
+
+
+        <li class="idx" data-reveal>
+          <div>
+            <h3>תכנון לעתיד ואפוטרופסות</h3>
+            <p>מסמכים שמאפשרים לכם להחליט מראש מי יחליט עבורכם — ולחסוך מהמשפחה הליכים מיותרים ברגע הקשה.</p>
+            <ul class="tags">
+            <li>ייפוי כוח מתמשך והנחיות מקדימות</li>
+            <li>מינוי אפוטרופוס</li>
+            <li>ליווי מול האפוטרופוס הכללי</li>
+            <li>הסדרת ענייני רכוש ובריאות מראש</li>
+            </ul>
+          </div>
+          <span class="idx__num" aria-hidden="true">06</span>
+        </li>
+
+      </ol>
       </div>
     </div>
   </section>
@@ -375,7 +389,7 @@
   <section class="section light" id="mediation">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <p class="eyebrow eyebrow--start">Mediation</p>
+        <span class="ghost" aria-hidden="true">Mediation</span>
         <h2>למה כדאי לנסות גישור לפני שמגישים תביעה</h2>
         <p class="lede">
           גישור אינו ויתור ואינו סימן לחולשה. זו דרך אחרת להגיע לאותה תוצאה —
@@ -450,7 +464,7 @@
   <section class="section" id="process">
     <div class="wrap">
       <div class="section-head section-head--center" data-reveal>
-        <p class="eyebrow eyebrow--center">How it works</p>
+        <span class="ghost" aria-hidden="true">Process</span>
         <h2>תהליך העבודה</h2>
         <p class="lede">ארבעה שלבים ברורים, כדי שתמיד תדעו איפה אנחנו עומדים ומה השלב הבא.</p>
       </div>
@@ -495,7 +509,7 @@
   <section class="section" id="faq">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <p class="eyebrow eyebrow--start">FAQ</p>
+        <span class="ghost" aria-hidden="true">Questions</span>
         <h2>שאלות נפוצות</h2>
       </div>
 
@@ -564,7 +578,7 @@
   <section class="section section--tint contact" id="contact">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <p class="eyebrow eyebrow--start">Contact</p>
+        <span class="ghost" aria-hidden="true">Contact</span>
         <h2>נשמח לשמוע</h2>
         <p class="lede">
           אפשר להתקשר, לשלוח הודעה בוואטסאפ או למלא את הטופס — ואחזור אליכם בהקדם,
@@ -614,6 +628,7 @@
         <form class="form" id="contact-form" novalidate data-reveal style="--d:120ms">
           <span class="corner corner--tr"><svg><use href="#i-corner"></use></svg></span>
           <span class="corner corner--bl"><svg><use href="#i-corner"></use></svg></span>
+          <span class="crest" aria-hidden="true"><svg viewBox="0 0 120 86"><use href="#i-crest"></use></svg></span>
           <h3>השאירו פרטים</h3>
           <p class="form__note">הטופס פותח הודעה מוכנה בוואטסאפ או בדוא״ל שלכם — בלי שהפרטים נשמרים באתר.</p>
 
