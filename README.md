@@ -1,6 +1,6 @@
-# משרד עורכי דין מורן מזור — Criminal Defence Landing Page
+# משרד עורכי דין מורן זילכה מזור — Criminal Defence Landing Page
 
-Hebrew (RTL) landing page for **Moran Mazor**, an Israeli criminal defence attorney.
+Hebrew (RTL) landing page for **Moran Zilka Mazor**, an Israeli criminal defence attorney.
 All copy on the site is the client's own text, supplied verbatim.
 
 **Static only** — plain HTML, CSS and vanilla JS. No build step, no backend, no API,
@@ -53,7 +53,7 @@ CONTENT.md            # Hebrew checklist of everything the client still has to s
 ## Logo
 
 The client asked for a logo in the style of a reference card she sent. It is an **MM**
-crest for Moran Mazor: two **M** glyphs woven together with the overlap in a deeper gold,
+crest for Moran Zilka Mazor: two **M** glyphs woven together with the overlap in a deeper gold,
 set inside an art-deco frame with chamfered corners, a double rule and diamond finials,
 over **LAW OFFICE** and **משפט פלילי**.
 
