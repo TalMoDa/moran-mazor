@@ -38,8 +38,10 @@ assets/
   css/style.css       # single stylesheet
   js/site.js          # mobile nav, scroll reveal, nav spy, header shrink +
                       # scroll progress, practice dialogs, accessibility toolbar
-  monogram.svg        # MZ monogram, traced out of the client's logo
-  wordmark.svg        # "MORAN ZILKA MAZOR" lettering, same source
+  logo.svg            # full MM lockup, gold on dark
+  logo-light.svg      # full MM lockup for light backgrounds
+  monogram.svg        # MM mark, gold
+  monogram-white.svg  # MM mark, white
   favicon.svg
   img/hero.jpg        # hero photo
   img/about.jpg       # about photo — replace with the client's portrait
@@ -48,9 +50,20 @@ brand/                # the original logo files (not served)
 CONTENT.md            # Hebrew checklist of everything the client still has to supply
 ```
 
-`monogram.svg`, `wordmark.svg` and `favicon.svg` were extracted from the client's logo SVG
-by isolating the relevant `<path>` elements and computing a tight `viewBox`, so the site
-uses real vectors of her logo rather than a screenshot of it.
+## Logo
+
+The client asked for a new logo in the style of a reference card she sent: an **MM**
+monogram (Moran Mazor) in gold, a hairline rule with diamond terminals, **LAW OFFICE**,
+and **משפט פלילי** beneath it.
+
+`tools/build-logo.py` generates the whole family. It pulls the three OFL fonts (Playfair
+Display for MM, Cinzel for LAW OFFICE, Frank Ruhl Libre for the Hebrew), instances the
+variable fonts at the right weight, and converts the glyphs to **outlines** with
+fontTools, so the logo renders identically everywhere without a webfont. Tracking, sizes
+and wording are parameters at the top of the script. PNG exports and an overview sheet
+live in `brand/exports/`.
+
+The previous art-deco MZL logo is kept in `brand/` for history and is no longer used.
 
 ## Photos
 
