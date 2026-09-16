@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://talmoda.github.io/moran-zilka-mazor/sitemap.xml
+Sitemap: https://talmoda.github.io/moran-mazor/sitemap.xml

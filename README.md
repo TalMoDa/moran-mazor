@@ -6,7 +6,7 @@ All copy on the site is the client's own text, supplied verbatim.
 **Static only** — plain HTML, CSS and vanilla JS. No build step, no backend, no API,
 no database. Drop the folder on any static host and it works.
 
-Live: https://talmoda.github.io/moran-zilka-mazor/
+Live: https://talmoda.github.io/moran-mazor/
 
 ## Design
 
