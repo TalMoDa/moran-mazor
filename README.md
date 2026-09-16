@@ -1,6 +1,6 @@
-# משרד עורכי דין מורן זילכה מזור — Criminal Defence Landing Page
+# משרד עורכי דין מורן מזור — Criminal Defence Landing Page
 
-Hebrew (RTL) landing page for **Moran Zilka Mazor**, an Israeli criminal defence attorney.
+Hebrew (RTL) landing page for **Moran Mazor**, an Israeli criminal defence attorney.
 All copy on the site is the client's own text, supplied verbatim.
 
 **Static only** — plain HTML, CSS and vanilla JS. No build step, no backend, no API,
@@ -52,16 +52,19 @@ CONTENT.md            # Hebrew checklist of everything the client still has to s
 
 ## Logo
 
-The client asked for a new logo in the style of a reference card she sent: an **MM**
-monogram (Moran Mazor) in gold, a hairline rule with diamond terminals, **LAW OFFICE**,
-and **משפט פלילי** beneath it.
+The client asked for a logo in the style of a reference card she sent. It is an **MM**
+crest for Moran Mazor: two **M** glyphs woven together with the overlap in a deeper gold,
+set inside an art-deco frame with chamfered corners, a double rule and diamond finials,
+over **LAW OFFICE** and **משפט פלילי**.
 
 `tools/build-logo.py` generates the whole family. It pulls the three OFL fonts (Playfair
-Display for MM, Cinzel for LAW OFFICE, Frank Ruhl Libre for the Hebrew), instances the
+Display for the M, Cinzel for LAW OFFICE, Frank Ruhl Libre for the Hebrew), instances the
 variable fonts at the right weight, and converts the glyphs to **outlines** with
-fontTools, so the logo renders identically everywhere without a webfont. Tracking, sizes
-and wording are parameters at the top of the script. PNG exports and an overview sheet
-live in `brand/exports/`.
+fontTools, so the logo renders identically everywhere without a webfont. The woven
+overlap is a `clipPath` of the first M filled with a darker gradient. Overlap, frame
+margin, sizes and wording are parameters at the top of the script. Variants: full lockup
+for dark and light backgrounds, the crest in gold, light and white, a frameless mark for
+tiny uses, and a square icon. PNG exports and an overview sheet live in `brand/exports/`.
 
 The previous art-deco MZL logo is kept in `brand/` for history and is no longer used.
 
@@ -103,10 +106,10 @@ grep -rl '+972-50-000-0000' --include='*.html' . | xargs sed -i 's/+972-50-000-0
 grep -rl '972500000000' --include='*.html' . | xargs sed -i 's/972500000000/972541234567/g'
 
 # email
-grep -rl 'office@zilka-mazor.co.il' --include='*.html' . | xargs sed -i 's/office@zilka-mazor.co.il/NEW@EMAIL/g'
+grep -rl 'office@mazor-law.co.il' --include='*.html' . | xargs sed -i 's/office@mazor-law.co.il/NEW@EMAIL/g'
 
 # domain (canonical, og:url, sitemap, robots)
-grep -rl 'www.zilka-mazor.co.il' . | xargs sed -i 's#www.zilka-mazor.co.il#NEW-DOMAIN#g'
+grep -rl 'www.mazor-law.co.il' . | xargs sed -i 's#www.mazor-law.co.il#NEW-DOMAIN#g'
 ```
 
 Remaining `[...]` placeholders (office address, service area, physical accessibility) are

@@ -162,7 +162,7 @@ p { text-wrap: pretty; }
   gap: 26px;
 }
 .brand { display: flex; align-items: center; gap: 13px; flex: none; }
-.brand img { width: auto; height: 30px; }
+.brand img { width: auto; height: 40px; }
 .brand > span { display: block; }
 .brand-title {
   display: block;
@@ -665,7 +665,7 @@ dialog.modal::backdrop { background: rgba(7, 28, 48, 0.62); }
 
 /* ---------- 14. Footer ---------- */
 .site-footer { background: var(--navy); color: #D3DDE6; padding-block: 30px 26px; font-size: 13.5px; }
-.footer-logo { display: block; width: 168px; margin: 0 auto 22px; opacity: 0.95; }
+.footer-logo { display: block; width: 132px; margin: 0 auto 24px; opacity: 0.95; }
 .footer-inner { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center; justify-content: space-between; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 .footer-links a:hover { color: var(--gold-lt); }
@@ -830,7 +830,7 @@ dialog.modal::backdrop { background: rgba(7, 28, 48, 0.62); }
 @media (max-width: 680px) {
   .header-inner { height: 70px; }
   .nav-panel { inset-block-start: 70px; }
-  .brand img { height: 25px; }
+  .brand img { height: 33px; }
   .brand-sub { font-size: 10px; }
   /* אין מקום גם ללוגו, גם ל-CTA וגם לתפריט — ה-CTA מחכה בתוך התפריט */
   .header-cta .btn { display: none; }
