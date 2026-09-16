@@ -1,6 +1,6 @@
 /* ============================================================
    עו״ד מורן זילכה מזור — סקריפט האתר
-   אין שרת ואין API: הטופס מרכיב הודעת וואטסאפ / דוא"ל בצד הלקוח.
+   אתר סטטי לגמרי: אין שרת, אין API ואין טופס.
    ============================================================ */
 (function () {
   'use strict';
@@ -92,56 +92,7 @@
     el.textContent = new Date().getFullYear();
   });
 
-  /* ---------- 5. קרוסלת ציטוטים ---------- */
-  var track = document.querySelector('#quotes');
-  if (track) {
-    var slides = Array.prototype.slice.call(track.querySelectorAll('.quote-slide'));
-    var dotsWrap = document.querySelector('#quote-dots');
-    var index = 0;
-    var timer = null;
-
-    var show = function (i) {
-      index = (i + slides.length) % slides.length;
-      slides.forEach(function (s, n) { s.classList.toggle('is-active', n === index); });
-      if (dotsWrap) {
-        dotsWrap.querySelectorAll('button').forEach(function (d, n) {
-          d.setAttribute('aria-current', n === index ? 'true' : 'false');
-        });
-      }
-    };
-    var start = function () {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      if (root.classList.contains('a11y-nomotion')) return;
-      stop();
-      timer = setInterval(function () { show(index + 1); }, 7000);
-    };
-    var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
-
-    if (dotsWrap) {
-      slides.forEach(function (_, n) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.setAttribute('aria-label', 'ציטוט ' + (n + 1));
-        b.addEventListener('click', function () { show(n); start(); });
-        dotsWrap.appendChild(b);
-      });
-    }
-    var prev = document.querySelector('.quote-nav--prev');
-    var next = document.querySelector('.quote-nav--next');
-    if (prev) prev.addEventListener('click', function () { show(index - 1); start(); });
-    if (next) next.addEventListener('click', function () { show(index + 1); start(); });
-
-    var band = document.querySelector('.quote-band');
-    if (band) {
-      band.addEventListener('mouseenter', stop);
-      band.addEventListener('mouseleave', start);
-      band.addEventListener('focusin', stop);
-    }
-    show(0);
-    start();
-  }
-
-  /* ---------- 6. חלונות תחומי עיסוק ---------- */
+  /* ---------- 5. חלונות תחומי המשרד ---------- */
   var openCard = null;
   var openModal = function (id) {
     var dlg = document.getElementById(id);
@@ -173,7 +124,7 @@
     });
   });
 
-  /* ---------- 7. תפריט נגישות ---------- */
+  /* ---------- 6. תפריט נגישות ---------- */
   var a11yBtn = document.querySelector('.a11y__btn');
   var a11yPanel = document.querySelector('.a11y__panel');
   if (a11yBtn && a11yPanel) {

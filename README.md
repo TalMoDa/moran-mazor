@@ -1,7 +1,7 @@
-# עו״ד מורן זילכה מזור — Law & Mediation Landing Page
+# משרד עורכי דין מורן זילכה מזור — Criminal Defence Landing Page
 
-Hebrew (RTL) landing page for **Moran Zilka Mazor**, an Israeli family-law attorney and
-certified mediator.
+Hebrew (RTL) landing page for **Moran Zilka Mazor**, an Israeli criminal defence attorney.
+All copy on the site is the client's own text, supplied verbatim.
 
 **Static only** — plain HTML, CSS and vanilla JS. No build step, no backend, no API,
 no database. Drop the folder on any static host and it works.
@@ -27,16 +27,17 @@ All of it lives in the `:root` block at the top of `assets/css/style.css`.
 ## Structure
 
 ```
-index.html            # header · hero · benefits · practice (6 cards + dialogs) ·
-                      # mediation · about · quote carousel · FAQ · contact · footer
+index.html            # header · hero · three principles · eleven practice areas
+                      # (cards + <dialog> details) · about · approach · quote ·
+                      # contact · footer
 accessibility.html    # הצהרת נגישות — required for Israeli business sites
 privacy.html          # מדיניות פרטיות ותנאי שימוש
 404.html
 robots.txt, sitemap.xml
 assets/
   css/style.css       # single stylesheet
-  js/site.js          # mobile nav, scroll reveal, nav spy, quote carousel,
-                      # practice dialogs, accessibility toolbar
+  js/site.js          # mobile nav, scroll reveal, nav spy, header shrink +
+                      # scroll progress, practice dialogs, accessibility toolbar
   monogram.svg        # MZ monogram, traced out of the client's logo
   wordmark.svg        # "MORAN ZILKA MAZOR" lettering, same source
   favicon.svg
@@ -56,6 +57,9 @@ uses real vectors of her logo rather than a screenshot of it.
 `hero.jpg` and `about.jpg` are the two free-licence Unsplash photos from the reference
 design, downloaded and served locally rather than hotlinked. **`about.jpg` shows other
 people and must be replaced with the client's own portrait** — see `CONTENT.md`.
+
+`brand/exports/` holds PNG renders of the logo (monogram, wordmark, icon, full logo) for
+use outside the web, alongside the SVG sources.
 
 To swap the hero photo without touching CSS, set the custom property on the section:
 
@@ -112,6 +116,7 @@ third-party widget** (no external script, no cookie, nothing to pay for):
 Hero content rises in on a stagger behind a slow Ken Burns drift on the photo; sections
 reveal on scroll; a gold progress bar tracks scroll in the header, which shrinks past 40px;
 icons lift on hover, the gold buttons catch a shine sweep, and the WhatsApp button pulses.
+All chevrons are drawn from CSS borders, because ‹ and › are bidi-mirrored and flip in RTL.
 Everything is CSS-driven and fully disabled by both `prefers-reduced-motion` and the
 "עצירת אנימציות" toggle in the accessibility menu.
 
