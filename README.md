@@ -71,8 +71,8 @@ The previous art-deco MZL logo is kept in `brand/` for history and is no longer 
 design, downloaded and served locally rather than hotlinked. **`about.jpg` shows other
 people and must be replaced with the client's own portrait** — see `CONTENT.md`.
 
-`brand/exports/` holds PNG renders of the logo (monogram, wordmark, icon, full logo) for
-use outside the web, alongside the SVG sources.
+`brand/exports/` holds PNG renders of the logo (full lockup, mark, icon) for use outside
+the web, alongside the SVG sources.
 
 To swap the hero photo without touching CSS, set the custom property on the section:
 
